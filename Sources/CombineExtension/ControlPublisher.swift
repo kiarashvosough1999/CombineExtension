@@ -123,17 +123,14 @@ extension Control: ControlPublisher {
         }
         func request(_ demand: Subscribers.Demand) {}
 
-        #if os(macOS)
         func cancel() {
+            #if os(macOS)
             self.control?.target = nil
             self.control?.action = nil
-            self.control = nil
-        }
-        #elseif os(iOS) || os(tvOS)
-        func cancel() {
+            #elseif os(iOS) || os(tvOS)
             self.control?.removeTarget(self, action: #selector(handleEvent), for: self.event)
+            #endif
             self.control = nil
         }
-        #endif
     }
 }
