@@ -5,7 +5,6 @@
 //  Created by Kiarash Vosough on 9/27/22.
 //
 
-import Foundation
 import Combine
 #if os(macOS)
 import Cocoa
